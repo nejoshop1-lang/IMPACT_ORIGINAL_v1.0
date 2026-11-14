@@ -331,13 +331,13 @@
       "settings": {
         "title": "Tes questions, nos réponses franches",
         "open_first": true,
-        "bg": "#FFFFFF"
+        "bg": "#FBF5F1"
       }
     },
     "rl_contact": {
       "type": "rl-contact",
       "settings": {
-        "bg": "#FBF5F1"
+        "bg": "#FFFFFF"
       }
     },
     "rl_timeline": {
@@ -491,6 +491,46 @@
     "rl_waitlist": {
       "type": "rl-waitlist",
       "settings": {}
+    },
+    "rl_guarantee": {
+      "type": "rl-guarantee",
+      "blocks": {
+        "g1": {
+          "type": "step",
+          "settings": {
+            "title": "Tu la portes 30 jours",
+            "text": "Au bureau, au resto, sur le canapé. Assise surtout : c’est là que tout se joue."
+          }
+        },
+        "g2": {
+          "type": "step",
+          "settings": {
+            "title": "Elle roule, elle serre, tu ne l’aimes pas ?",
+            "text": "Tu nous écris avec ton numéro de commande. Pas de justificatif à fournir."
+          }
+        },
+        "g3": {
+          "type": "step",
+          "settings": {
+            "title": "On te rembourse",
+            "text": "Sans discussion. Une vraie personne te répond."
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "settings": {
+        "label": "Essai 30 jours",
+        "title": "Si elle roule, <em>on te rembourse.</em>",
+        "text_body": "On préfère te rendre ton argent que te laisser une gaine de plus au fond du tiroir.",
+        "link_label": "Nous écrire",
+        "link_anchor": "#contact",
+        "bg": "#FFFFFF",
+        "accent": "#B3261E"
+      }
     }
   },
   "order": [
@@ -503,6 +543,7 @@
     "rl_how",
     "rl_compare",
     "rl_timeline",
+    "rl_guarantee",
     "rl_faq",
     "rl_waitlist",
     "rl_contact"
