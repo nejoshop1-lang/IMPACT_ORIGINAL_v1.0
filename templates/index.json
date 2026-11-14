@@ -22,18 +22,76 @@
         "accent": "#B3261E"
       }
     },
-    "rl_press": { "type": "rl-press-logos", "settings": {} },
+    "rl_press": {
+      "type": "rl-press-logos",
+      "settings": {}
+    },
     "rl_benefits": {
       "type": "rl-benefits",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "side": "left", "icon": "breath", "title": "Tu respires enfin", "text": "Elle maintient ton ventre à ta place. Tu n'as plus à le retenir toute la journée." } },
-        "b2": { "type": "benefit", "settings": { "side": "left", "icon": "seat", "title": "Elle tient quand tu t'assois", "text": "Taille haute au-dessus du nombril : le pli du ventre reste maintenu en position assise." } },
-        "b3": { "type": "benefit", "settings": { "side": "left", "icon": "clock", "title": "Tu l'oublies à 15 h", "text": "Pas besoin de l'enlever en cachette aux toilettes du bureau." } },
-        "b4": { "type": "benefit", "settings": { "side": "right", "icon": "flat", "title": "Effet ventre plat immédiat", "text": "Dès que tu l'enfiles. Sous un jean, une robe, un tailleur." } },
-        "b5": { "type": "benefit", "settings": { "side": "right", "icon": "dress", "title": "Discrète sous tes vêtements", "text": "Beige ou noir pour disparaître. Rouge pour celles qui assument." } },
-        "b6": { "type": "benefit", "settings": { "side": "right", "icon": "size", "title": "Du S au 5XL", "text": "Un guide des tailles en centimètres, pensé pour les tailles françaises." } }
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "side": "left",
+            "icon": "breath",
+            "title": "Tu respires enfin",
+            "text": "Elle maintient ton ventre à ta place. Tu n'as plus à le retenir toute la journée."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "side": "left",
+            "icon": "seat",
+            "title": "Elle tient quand tu t'assois",
+            "text": "Taille haute au-dessus du nombril : le pli du ventre reste maintenu en position assise."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "side": "left",
+            "icon": "clock",
+            "title": "Tu l'oublies à 15 h",
+            "text": "Pas besoin de l'enlever en cachette aux toilettes du bureau."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "side": "right",
+            "icon": "flat",
+            "title": "Effet ventre plat immédiat",
+            "text": "Dès que tu l'enfiles. Sous un jean, une robe, un tailleur."
+          }
+        },
+        "b5": {
+          "type": "benefit",
+          "settings": {
+            "side": "right",
+            "icon": "dress",
+            "title": "Discrète sous tes vêtements",
+            "text": "Beige ou noir pour disparaître. Rouge pour celles qui assument."
+          }
+        },
+        "b6": {
+          "type": "benefit",
+          "settings": {
+            "side": "right",
+            "icon": "size",
+            "title": "Du S au 5XL",
+            "text": "Un guide des tailles en centimètres, pensé pour les tailles françaises."
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
       "settings": {
         "title": "Comme quand quelqu'un te prend ton sac des mains",
         "subtitle": "Tu ne savais pas à quel point il était lourd.",
@@ -44,58 +102,246 @@
     "rl_ugc": {
       "type": "rl-ugc-videos",
       "blocks": {
-        "v1": { "type": "video", "settings": { "caption": "Assise / debout, avec et sans" } },
-        "v2": { "type": "video", "settings": { "caption": "Même robe moulante" } },
-        "v3": { "type": "video", "settings": { "caption": "Le test des escaliers" } },
-        "v4": { "type": "video", "settings": { "caption": "Le jean du soir" } }
+        "v1": {
+          "type": "video",
+          "settings": {
+            "caption": "Assise / debout, avec et sans"
+          }
+        },
+        "v2": {
+          "type": "video",
+          "settings": {
+            "caption": "Même robe moulante"
+          }
+        },
+        "v3": {
+          "type": "video",
+          "settings": {
+            "caption": "Le test des escaliers"
+          }
+        },
+        "v4": {
+          "type": "video",
+          "settings": {
+            "caption": "Le jean du soir"
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"],
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
       "settings": {}
     },
     "rl_reviews": {
       "type": "rl-reviews",
       "blocks": {
-        "r1": { "type": "review", "settings": {} },
-        "r2": { "type": "review", "settings": {} },
-        "r3": { "type": "review", "settings": {} }
+        "r1": {
+          "type": "review",
+          "settings": {}
+        },
+        "r2": {
+          "type": "review",
+          "settings": {}
+        },
+        "r3": {
+          "type": "review",
+          "settings": {}
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {}
     },
     "rl_how": {
       "type": "rl-how-to",
       "blocks": {
-        "s1": { "type": "step", "settings": { "title": "Mesure ton tour de taille", "text": "Au niveau du nombril, en centimètres." } },
-        "s2": { "type": "step", "settings": { "title": "Remonte-la au-dessus du nombril", "text": "C'est là qu'elle tient le mieux, debout comme assise." } },
-        "s3": { "type": "step", "settings": { "title": "Lave-la à la main", "text": "À l'eau froide, séchage à plat. Elle garde son maintien plus longtemps." } },
-        "t1": { "type": "size", "settings": { "label": "S" } },
-        "t2": { "type": "size", "settings": { "label": "M" } },
-        "t3": { "type": "size", "settings": { "label": "L" } },
-        "t4": { "type": "size", "settings": { "label": "XL" } },
-        "t5": { "type": "size", "settings": { "label": "2XL" } },
-        "t6": { "type": "size", "settings": { "label": "3XL" } },
-        "t7": { "type": "size", "settings": { "label": "4XL" } },
-        "t8": { "type": "size", "settings": { "label": "5XL" } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Mesure ton tour de taille",
+            "text": "Au niveau du nombril, en centimètres."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Remonte-la au-dessus du nombril",
+            "text": "C'est là qu'elle tient le mieux, debout comme assise."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Lave-la à la main",
+            "text": "À l'eau froide, séchage à plat. Elle garde son maintien plus longtemps."
+          }
+        },
+        "t1": {
+          "type": "size",
+          "settings": {
+            "label": "S",
+            "fr": "32-34",
+            "waist": "33-43 kg",
+            "hips": "52 cm"
+          }
+        },
+        "t2": {
+          "type": "size",
+          "settings": {
+            "label": "M",
+            "fr": "34-36",
+            "waist": "43-53 kg",
+            "hips": "56 cm"
+          }
+        },
+        "t3": {
+          "type": "size",
+          "settings": {
+            "label": "L",
+            "fr": "36-38",
+            "waist": "53-63 kg",
+            "hips": "60 cm"
+          }
+        },
+        "t4": {
+          "type": "size",
+          "settings": {
+            "label": "XL",
+            "fr": "40-42",
+            "waist": "63-73 kg",
+            "hips": "64 cm"
+          }
+        },
+        "t5": {
+          "type": "size",
+          "settings": {
+            "label": "2XL",
+            "fr": "44-46",
+            "waist": "73-83 kg",
+            "hips": "68 cm"
+          }
+        },
+        "t6": {
+          "type": "size",
+          "settings": {
+            "label": "3XL",
+            "fr": "48-50",
+            "waist": "83-93 kg",
+            "hips": "72 cm"
+          }
+        },
+        "t7": {
+          "type": "size",
+          "settings": {
+            "label": "4XL",
+            "fr": "52-54",
+            "waist": "93-103 kg",
+            "hips": "76 cm"
+          }
+        },
+        "t8": {
+          "type": "size",
+          "settings": {
+            "label": "5XL",
+            "fr": "56 et plus",
+            "waist": "103-113 kg",
+            "hips": "80 cm"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8"
+      ],
       "settings": {
         "title": "Simple comme une culotte",
+        "col_fr": "Équivalent FR",
+        "col_waist": "Poids indicatif",
+        "col_hips": "Taille de la culotte à plat",
+        "size_note": "Entre deux tailles ? Prends la plus grande. Elle doit tenir, pas serrer.",
         "composition": "<p>Lavage à la main à l'eau froide. Séchage à plat. Ne pas sécher en machine.</p>"
       }
     },
     "rl_faq": {
       "type": "rl-faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "Est-ce qu'elle fait maigrir ?", "answer": "<p>Non, et on préfère te le dire. Elle maintient ton ventre tant que tu la portes. C'est tout, et c'est déjà beaucoup.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Est-ce qu'elle roule quand je m'assois ?", "answer": "<p>Elle monte au-dessus du nombril pour rester en place assise. Et si elle roule quand même, l'essai 30 jours te rembourse.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Je peux la porter toute la journée ?", "answer": "<p>Oui, si elle est à ta taille. Si elle serre, c'est qu'il te faut la taille au-dessus.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Et après une grossesse ?", "answer": "<p>Oui pour le confort au quotidien. Après une césarienne ou une opération, demande d'abord l'avis de ton médecin ou de ta sage-femme.</p>" } },
-        "q5": { "type": "question", "settings": { "question": "Et si elle ne me va pas ?", "answer": "<p>Essai 30 jours. Si elle roule, si elle serre ou si tu ne l'aimes pas, on te rembourse.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Est-ce qu'elle fait maigrir ?",
+            "answer": "<p>Non, et on préfère te le dire. Elle maintient ton ventre tant que tu la portes. C'est tout, et c'est déjà beaucoup.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Est-ce qu'elle roule quand je m'assois ?",
+            "answer": "<p>Elle monte au-dessus du nombril pour rester en place assise. Et si elle roule quand même, l'essai 30 jours te rembourse.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Je peux la porter toute la journée ?",
+            "answer": "<p>Oui, si elle est à ta taille. Si elle serre, c'est qu'il te faut la taille au-dessus.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Et après une grossesse ?",
+            "answer": "<p>Oui pour le confort au quotidien. Après une césarienne ou une opération, demande d'abord l'avis de ton médecin ou de ta sage-femme.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Et si elle ne me va pas ?",
+            "answer": "<p>Essai 30 jours. Si elle roule, si elle serre ou si tu ne l'aimes pas, on te rembourse.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
-      "settings": { "title": "Tes questions, nos réponses franches", "open_first": true, "bg": "#FFFFFF" }
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Tes questions, nos réponses franches",
+        "open_first": true,
+        "bg": "#FFFFFF"
+      }
     },
-    "rl_contact": { "type": "rl-contact", "settings": {} }
+    "rl_contact": {
+      "type": "rl-contact",
+      "settings": {}
+    }
   },
-  "order": ["rl_hero", "rl_press", "rl_benefits", "rl_ugc", "rl_reviews", "rl_how", "rl_faq", "rl_contact"]
+  "order": [
+    "rl_hero",
+    "rl_press",
+    "rl_benefits",
+    "rl_ugc",
+    "rl_reviews",
+    "rl_how",
+    "rl_faq",
+    "rl_contact"
+  ]
 }
