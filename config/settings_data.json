@@ -21,27 +21,27 @@
     "icon_style": "duo",
     "button_style": "rellenar",
     "button_hover_effect": "Desvanecer",
-    "background": "#eef1f6",
-    "text_color": "#000000",
+    "background": "#ffffff",
+    "text_color": "#1c1917",
     "success_color": "#00a341",
     "warning_color": "#ffb74a",
     "error_color": "#f83a3a",
-    "header_background": "#000000",
-    "header_text_color": "#000000",
-    "footer_background": "#020101",
-    "footer_text_color": "#ffffff",
-    "primary_button_background": "#c0bbe7",
-    "primary_button_text_color": "#000000",
-    "secondary_button_background": "#000000",
+    "header_background": "#ffffff",
+    "header_text_color": "#1c1917",
+    "footer_background": "#fbf5f1",
+    "footer_text_color": "#1c1917",
+    "primary_button_background": "#b3261e",
+    "primary_button_text_color": "#ffffff",
+    "secondary_button_background": "#1c1917",
     "secondary_button_text_color": "#ffffff",
     "product_card_background": "#ffffff",
     "product_card_text_color": "#1a1a1a",
     "product_on_sale_accent": "#235444",
     "product_sold_out_badge_background": "#000000",
     "product_primary_badge_background": "#803cee",
-    "heading_font": "barlow_n7",
+    "heading_font": "montserrat_n8",
     "heading_font_size": "large",
-    "heading_text_transform": "normal",
+    "heading_text_transform": "uppercase",
     "heading_letter_spacing": -2,
     "text_font": "din_next_n4",
     "text_font_size_desktop": 16,
@@ -57,19 +57,7 @@
     "cart_free_shipping_threshold": 0,
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
-    "content_for_index": [],
-    "blocks": {
-      "15557474716127144420": {
-        "type": "shopify://apps/kaching-bundles/blocks/app-embed-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
-        "disabled": false,
-        "settings": {}
-      },
-      "2567389343055140935": {
-        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   },
   "presets": {
     "Sound": {

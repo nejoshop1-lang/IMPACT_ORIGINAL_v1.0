@@ -1,0 +1,72 @@
+{%- comment -%} Relâche — 3. Bénéfices (intérêt). Image produit au centre, bénéfices de chaque côté. {%- endcomment -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-ben { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px); display:flex; flex-direction:column; align-items:center; gap:56px; }
+  #shopify-section-{{ section.id }} .rl-ben__head { text-align:center; max-width:760px; display:flex; flex-direction:column; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-ben__head h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(26px,3.2vw,42px); line-height:1.12; text-transform:uppercase; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-ben__head p { margin:0; font-size:17px; opacity:.8; }
+  #shopify-section-{{ section.id }} .rl-ben__grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:40px 56px; width:100%; max-width:1180px; }
+  #shopify-section-{{ section.id }} .rl-ben__col { flex:1 1 280px; display:flex; flex-direction:column; gap:36px; }
+  #shopify-section-{{ section.id }} .rl-ben__item { display:flex; gap:16px; align-items:flex-start; }
+  #shopify-section-{{ section.id }} .rl-ben__icon { flex:none; width:48px; height:48px; border-radius:50%; background:{{ section.settings.accent }}; display:flex; align-items:center; justify-content:center; }
+  #shopify-section-{{ section.id }} .rl-ben__icon svg { width:22px; height:22px; stroke:#FFFFFF; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  #shopify-section-{{ section.id }} .rl-ben__item h3 { margin:0 0 6px; font-family:var(--text-font-family); font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; line-height:1.3; }
+  #shopify-section-{{ section.id }} .rl-ben__item p { margin:0; font-size:15px; line-height:1.55; opacity:.85; }
+  #shopify-section-{{ section.id }} .rl-ben__img { align-self:center; flex:0 1 340px; aspect-ratio:340/440; border-radius:200px 200px 24px 24px; overflow:hidden; background:#F6E9E4; }
+  #shopify-section-{{ section.id }} .rl-ben__img img { width:100%; height:100%; object-fit:cover; display:block; }
+  @media (max-width: 899px) { #shopify-section-{{ section.id }} .rl-ben__img { order:-1; } }
+{%- endstyle -%}
+
+{%- capture left -%}{%- for block in section.blocks -%}{%- if block.settings.side == 'left' -%}{%- render 'rl-benefit-item', block: block -%}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- capture right -%}{%- for block in section.blocks -%}{%- if block.settings.side == 'right' -%}{%- render 'rl-benefit-item', block: block -%}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+
+<section class="rl-ben" id="benefices">
+  <div class="rl-ben__head">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p>{{ section.settings.subtitle }}</p>{%- endif -%}
+  </div>
+  <div class="rl-ben__grid">
+    <div class="rl-ben__col">{{ left }}</div>
+    {%- if section.settings.image != blank -%}
+    <div class="rl-ben__img">
+      {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.image.alt }}
+    </div>
+    {%- endif -%}
+    <div class="rl-ben__col">{{ right }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RL · Bénéfices",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Comme quand quelqu'un te prend ton sac des mains" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Tu ne savais pas à quel point il était lourd." },
+    { "type": "image_picker", "id": "image", "label": "Image produit (centre)", "info": "Sans image, les bénéfices s'affichent sur deux colonnes." },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent", "label": "Couleur des pictos", "default": "#B3261E" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Bénéfice",
+      "settings": [
+        { "type": "select", "id": "side", "label": "Position", "options": [ { "value": "left", "label": "Gauche" }, { "value": "right", "label": "Droite" } ], "default": "left" },
+        { "type": "select", "id": "icon", "label": "Picto", "options": [
+          { "value": "breath", "label": "Respiration" },
+          { "value": "seat", "label": "Assise" },
+          { "value": "clock", "label": "Horloge" },
+          { "value": "flat", "label": "Ventre plat" },
+          { "value": "dress", "label": "Vêtement" },
+          { "value": "size", "label": "Tailles" },
+          { "value": "check", "label": "Coche" }
+        ], "default": "check" },
+        { "type": "text", "id": "title", "label": "Bénéfice", "default": "Bénéfice" },
+        { "type": "textarea", "id": "text", "label": "Texte court" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "RL · Bénéfices" }]
+}
+{% endschema %}

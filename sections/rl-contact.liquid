@@ -1,0 +1,61 @@
+{%- comment -%} Relâche — 10. Nous contacter (confiance). Les messages arrivent sur l'e-mail de la boutique. {%- endcomment -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-contact { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px); display:flex; justify-content:center; }
+  #shopify-section-{{ section.id }} .rl-contact__inner { width:100%; max-width:640px; display:flex; flex-direction:column; gap:16px; }
+  #shopify-section-{{ section.id }} .rl-contact h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(24px,3vw,38px); line-height:1.12; text-transform:uppercase; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-contact__intro { margin:0; font-size:15px; opacity:.85; }
+  #shopify-section-{{ section.id }} .rl-contact__row { display:flex; flex-wrap:wrap; gap:16px; }
+  #shopify-section-{{ section.id }} .rl-contact label { flex:1 1 220px; display:flex; flex-direction:column; gap:6px; font-size:14px; font-weight:600; }
+  #shopify-section-{{ section.id }} .rl-contact input, #shopify-section-{{ section.id }} .rl-contact textarea { min-height:48px; border:1px solid #A8998A; border-radius:10px; padding:10px 14px; font:inherit; font-weight:400; background:#FFFFFF; color:inherit; box-sizing:border-box; width:100%; }
+  #shopify-section-{{ section.id }} .rl-contact textarea { resize:vertical; }
+  #shopify-section-{{ section.id }} .rl-contact button { align-self:flex-start; min-height:48px; padding:0 28px; border:0; border-radius:999px; background:{{ section.settings.accent }}; color:#FFFFFF; font:inherit; font-weight:700; cursor:pointer; }
+  #shopify-section-{{ section.id }} .rl-contact__msg { margin:0; padding:12px 14px; border-radius:10px; font-size:14px; }
+  #shopify-section-{{ section.id }} .rl-contact__msg--ok { background:#EAF4EC; color:#1E5B2C; }
+  #shopify-section-{{ section.id }} .rl-contact__msg--err { background:#FBECEA; color:#8A1C14; }
+{%- endstyle -%}
+
+<section class="rl-contact" id="contact">
+  <div class="rl-contact__inner">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="rl-contact__intro">{{ section.settings.intro }}</p>{%- endif -%}
+    {%- form 'contact', id: 'RlContactForm', class: 'rl-contact__inner' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="rl-contact__msg rl-contact__msg--ok" role="status">{{ section.settings.success }}</p>
+      {%- elsif form.errors -%}
+        <p class="rl-contact__msg rl-contact__msg--err" role="alert">{{ section.settings.error }}</p>
+      {%- endif -%}
+      <div class="rl-contact__row">
+        <label for="RlContact-name-{{ section.id }}">{{ section.settings.label_name }}
+          <input type="text" id="RlContact-name-{{ section.id }}" name="contact[name]" autocomplete="given-name" value="{{ form.name }}">
+        </label>
+        <label for="RlContact-email-{{ section.id }}">{{ section.settings.label_email }}
+          <input type="email" id="RlContact-email-{{ section.id }}" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+        </label>
+      </div>
+      <label for="RlContact-body-{{ section.id }}">{{ section.settings.label_message }}
+        <textarea id="RlContact-body-{{ section.id }}" name="contact[body]" rows="5" required>{{ form.body }}</textarea>
+      </label>
+      <button type="submit">{{ section.settings.button }}</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RL · Nous contacter",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Une question ? On te répond." },
+    { "type": "text", "id": "intro", "label": "Texte", "default": "Une vraie personne lit chaque message." },
+    { "type": "text", "id": "label_name", "label": "Libellé prénom", "default": "Prénom" },
+    { "type": "text", "id": "label_email", "label": "Libellé e-mail", "default": "E-mail" },
+    { "type": "text", "id": "label_message", "label": "Libellé message", "default": "Message" },
+    { "type": "text", "id": "button", "label": "Bouton", "default": "Envoyer" },
+    { "type": "text", "id": "success", "label": "Message de confirmation", "default": "Merci ! On te répond très vite." },
+    { "type": "text", "id": "error", "label": "Message d'erreur", "default": "Vérifie ton e-mail et ton message, puis réessaie." },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FBF5F1" },
+    { "type": "color", "id": "accent", "label": "Couleur du bouton", "default": "#B3261E" }
+  ],
+  "presets": [{ "name": "RL · Nous contacter" }]
+}
+{% endschema %}

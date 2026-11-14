@@ -17,21 +17,21 @@
         "message_KQRq4K": {
           "type": "message",
           "settings": {
-            "text": "PROCHAIN RÉAPPROVISIONNEMENT EN JUILLET 2026",
+            "text": "Livraison suivie offerte dès 2 culottes",
             "url": ""
           }
         },
         "message_xegXTL": {
           "type": "message",
           "settings": {
-            "text": "STOCKS TRÈS FAIBLES",
+            "text": "Essai 30 jours : si elle roule, on te rembourse",
             "url": ""
           }
         },
         "message_rQ3fjz": {
           "type": "message",
           "settings": {
-            "text": "SATISFAIT OU REMBOURSÉ",
+            "text": "Paiement 100 % sécurisé",
             "url": ""
           }
         }
@@ -46,7 +46,7 @@
         "text_size": "text-base",
         "navigation_mode": "scrolling",
         "scrolling_speed": 14,
-        "background": "#000000",
+        "background": "#b3261e",
         "background_gradient": "",
         "text_color": "#ffffff"
       }

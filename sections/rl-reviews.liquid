@@ -1,0 +1,66 @@
+{%- comment -%} Relâche — 5. Avis clientes orientés bénéfice (preuve sociale). Uniquement des avis réels. {%- endcomment -%}
+{%- assign real = 0 -%}
+{%- for block in section.blocks -%}{%- if block.settings.text != blank and block.settings.name != blank -%}{%- assign real = real | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if real > 0 -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-rev { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px); display:flex; flex-direction:column; align-items:center; gap:32px; }
+  #shopify-section-{{ section.id }} .rl-rev h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(24px,3vw,38px); line-height:1.12; text-transform:uppercase; text-align:center; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-rev__row { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(250px, 1fr); gap:18px; width:100%; max-width:1180px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; }
+  #shopify-section-{{ section.id }} .rl-rev__card { scroll-snap-align:start; background:#FFFFFF; border:1px solid #F0E6DD; border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-rev__photo { aspect-ratio:4/3; border-radius:10px; overflow:hidden; background:#F6EEEA; }
+  #shopify-section-{{ section.id }} .rl-rev__photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  #shopify-section-{{ section.id }} .rl-rev__stars { color:{{ section.settings.accent }}; letter-spacing:2px; font-size:16px; }
+  #shopify-section-{{ section.id }} .rl-rev__text { margin:0; font-size:15px; line-height:1.55; }
+  #shopify-section-{{ section.id }} .rl-rev__name { margin:0; font-size:13px; font-weight:700; }
+  #shopify-section-{{ section.id }} .rl-rev__name span { font-weight:400; opacity:.7; }
+{%- endstyle -%}
+<section class="rl-rev" id="avis">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="rl-rev__row">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.text != blank and block.settings.name != blank -%}
+        <article class="rl-rev__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.photo != blank -%}
+            <div class="rl-rev__photo">{{ block.settings.photo | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name }}</div>
+          {%- endif -%}
+          {%- assign empty = 5 | minus: block.settings.rating -%}
+          <div class="rl-rev__stars" role="img" aria-label="{{ block.settings.rating }} / 5">
+            {%- for i in (1..block.settings.rating) -%}★{%- endfor -%}{%- if empty > 0 -%}<span style="opacity:.25">{%- for i in (1..empty) -%}★{%- endfor -%}</span>{%- endif -%}
+          </div>
+          <p class="rl-rev__text">{{ block.settings.text }}</p>
+          <p class="rl-rev__name">{{ block.settings.name }}{%- if block.settings.verified and section.settings.verified_label != blank -%} <span>· {{ section.settings.verified_label }}</span>{%- endif -%}</p>
+        </article>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "RL · Avis clientes",
+  "tag": "div",
+  "settings": [
+    { "type": "paragraph", "content": "Uniquement des avis réels de clientes. La section reste invisible tant qu'aucun avis (prénom + texte) n'est rempli." },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Elles ont arrêté de rentrer leur ventre" },
+    { "type": "text", "id": "verified_label", "label": "Mention achat vérifié", "default": "Achat vérifié" },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent", "label": "Couleur des étoiles", "default": "#B3261E" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Avis",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Prénom (et initiale)" },
+        { "type": "range", "id": "rating", "label": "Note", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "text", "label": "Avis (texte de la cliente)" },
+        { "type": "image_picker", "id": "photo", "label": "Photo de la cliente (avec son accord)" },
+        { "type": "checkbox", "id": "verified", "label": "Achat vérifié", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [{ "name": "RL · Avis clientes" }]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+{%- comment -%} Relâche — 4. Avant / après en vidéos UGC (contraste). Vidéos verticales 9:16. {%- endcomment -%}
+{%- assign media_count = 0 -%}
+{%- for block in section.blocks -%}{%- if block.settings.video != blank or block.settings.image != blank -%}{%- assign media_count = media_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if media_count > 0 or request.design_mode -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-ugc { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px); display:flex; flex-direction:column; align-items:center; gap:36px; }
+  #shopify-section-{{ section.id }} .rl-ugc__head { text-align:center; max-width:760px; display:flex; flex-direction:column; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-ugc__head h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(26px,3.2vw,42px); line-height:1.12; text-transform:uppercase; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-ugc__head h2 em { font-style:normal; color:{{ section.settings.accent }}; }
+  #shopify-section-{{ section.id }} .rl-ugc__head p { margin:0; font-size:16px; opacity:.8; }
+  #shopify-section-{{ section.id }} .rl-ugc__row { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(200px, 1fr); gap:16px; width:100%; max-width:1180px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; }
+  #shopify-section-{{ section.id }} .rl-ugc__card { scroll-snap-align:start; display:flex; flex-direction:column; gap:10px; }
+  #shopify-section-{{ section.id }} .rl-ugc__media { aspect-ratio:9/16; border-radius:14px; overflow:hidden; background:#F6E9E4; position:relative; }
+  #shopify-section-{{ section.id }} .rl-ugc__media video, #shopify-section-{{ section.id }} .rl-ugc__media img { width:100%; height:100%; object-fit:cover; display:block; }
+  #shopify-section-{{ section.id }} .rl-ugc__ph { position:absolute; inset:12px; border:1.5px dashed #C9A99B; border-radius:10px; display:flex; align-items:center; justify-content:center; text-align:center; color:#57534E; font-size:13px; padding:12px; }
+  #shopify-section-{{ section.id }} .rl-ugc__caption { margin:0; font-size:14px; text-align:center; opacity:.85; }
+{%- endstyle -%}
+
+<section class="rl-ugc">
+  <div class="rl-ugc__head">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p>{{ section.settings.subtitle }}</p>{%- endif -%}
+  </div>
+  <div class="rl-ugc__row">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.video != blank or block.settings.image != blank or request.design_mode -%}
+      <div class="rl-ugc__card" {{ block.shopify_attributes }}>
+        <div class="rl-ugc__media">
+          {%- if block.settings.video != blank -%}
+            {%- if section.settings.autoplay -%}
+              {{ block.settings.video | video_tag: image_size: '600x', autoplay: true, loop: true, muted: true, playsinline: true, controls: false }}
+            {%- else -%}
+              {{ block.settings.video | video_tag: image_size: '600x', controls: true, playsinline: true, preload: 'metadata' }}
+            {%- endif -%}
+          {%- elsif block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.caption }}
+          {%- else -%}
+            <div class="rl-ugc__ph">{{ section.settings.placeholder }}</div>
+          {%- endif -%}
+        </div>
+        {%- if block.settings.caption != blank -%}<p class="rl-ugc__caption">{{ block.settings.caption }}</p>{%- endif -%}
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "RL · Avant / après UGC",
+  "tag": "div",
+  "settings": [
+    { "type": "paragraph", "content": "La section n'apparaît sur le site que lorsqu'au moins une vidéo ou une image est ajoutée." },
+    { "type": "inline_richtext", "id": "title", "label": "Titre", "info": "Le texte en italique passe en couleur d'accent.", "default": "Debout, elles marchent toutes. <em>Assise, c'est une autre histoire.</em>" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Même robe, même lumière. On s'assoit, on se relève. Avec et sans." },
+    { "type": "text", "id": "placeholder", "label": "Texte des emplacements vides (éditeur uniquement)", "default": "Ajoute une vidéo 9:16" },
+    { "type": "checkbox", "id": "autoplay", "label": "Lecture auto en boucle, sans son", "default": true },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FBF5F1" },
+    { "type": "color", "id": "accent", "label": "Couleur d'accent", "default": "#B3261E" }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Vidéo",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Vidéo (importée dans Shopify)" },
+        { "type": "image_picker", "id": "image", "label": "Ou image avant/après" },
+        { "type": "text", "id": "caption", "label": "Légende" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "RL · Avant / après UGC" }]
+}
+{% endschema %}

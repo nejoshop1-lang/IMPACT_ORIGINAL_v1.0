@@ -1,0 +1,20 @@
+{%- comment -%} Relâche — un bénéfice (utilisé par rl-benefits). {%- endcomment -%}
+<div class="rl-ben__item" {{ block.shopify_attributes }}>
+  <div class="rl-ben__icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      {%- case block.settings.icon -%}
+        {%- when 'breath' -%}<path d="M3 10c3-4 6-4 9 0s6 4 9 0M3 15c3-4 6-4 9 0s6 4 9 0"/>
+        {%- when 'seat' -%}<path d="M6 21v-6h11v6M17 15V5M6 15V11"/>
+        {%- when 'clock' -%}<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>
+        {%- when 'flat' -%}<path d="M4 7h16M4 12h16M4 17h16"/>
+        {%- when 'dress' -%}<path d="M9 3h6l-1 5 4 13H6l4-13z"/>
+        {%- when 'size' -%}<path d="M3 17 17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2"/>
+        {%- else -%}<path d="m5 12 5 5 9-10"/>
+      {%- endcase -%}
+    </svg>
+  </div>
+  <div>
+    <h3>{{ block.settings.title }}</h3>
+    {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{%- comment -%} Relâche — 2. Logos presse (autorité). Uniquement des parutions réelles. {%- endcomment -%}
+{%- assign shown = 0 -%}
+{%- for block in section.blocks -%}{%- if block.settings.logo != blank -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if shown > 0 -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-press { background:{{ section.settings.bg }}; padding:32px 20px; display:flex; flex-direction:column; align-items:center; gap:16px; }
+  #shopify-section-{{ section.id }} .rl-press__label { margin:0; font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; opacity:.7; }
+  #shopify-section-{{ section.id }} .rl-press__row { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:24px 40px; }
+  #shopify-section-{{ section.id }} .rl-press__row img { height:{{ section.settings.logo_height }}px; width:auto; {% if section.settings.grayscale %}filter:grayscale(1); opacity:.75;{% endif %} }
+  #shopify-section-{{ section.id }} .rl-press__row a { display:inline-flex; }
+{%- endstyle -%}
+<section class="rl-press" aria-label="{{ section.settings.label | escape }}">
+  <p class="rl-press__label">{{ section.settings.label }}</p>
+  <div class="rl-press__row">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.logo != blank -%}
+        {%- capture img -%}{{ block.settings.logo | image_url: height: 120 | image_tag: alt: block.settings.name, loading: 'lazy' }}{%- endcapture -%}
+        <span {{ block.shopify_attributes }}>
+          {%- if block.settings.article_url != blank -%}<a href="{{ block.settings.article_url }}" target="_blank" rel="noopener">{{ img }}</a>{%- else -%}{{ img }}{%- endif -%}
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "RL · Vu dans la presse",
+  "tag": "div",
+  "settings": [
+    { "type": "paragraph", "content": "N'ajoute que des médias qui ont réellement parlé de ta marque. La section reste invisible tant qu'aucun logo n'est ajouté." },
+    { "type": "text", "id": "label", "label": "Libellé", "default": "Vu dans" },
+    { "type": "range", "id": "logo_height", "label": "Hauteur des logos", "min": 16, "max": 60, "step": 2, "unit": "px", "default": 28 },
+    { "type": "checkbox", "id": "grayscale", "label": "Logos en niveaux de gris", "default": true },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FBF5F1" }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo média",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Nom du média" },
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        { "type": "url", "id": "article_url", "label": "Lien vers l'article (recommandé)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "RL · Vu dans la presse" }]
+}
+{% endschema %}
