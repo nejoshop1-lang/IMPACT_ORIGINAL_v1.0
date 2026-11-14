@@ -1,0 +1,62 @@
+{%- comment -%} Relâche — Frise « ta première journée ». {%- endcomment -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-tl { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px); display:flex; flex-direction:column; align-items:center; gap:48px; }
+  #shopify-section-{{ section.id }} .rl-tl__head { text-align:center; max-width:760px; display:flex; flex-direction:column; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-tl__head h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(26px,3.2vw,42px); line-height:1.12; text-transform:uppercase; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-tl__head p { margin:0; font-size:17px; opacity:.8; }
+  #shopify-section-{{ section.id }} .rl-tl__list { list-style:none; margin:0; padding:0; width:100%; max-width:1180px; display:grid; grid-template-columns:repeat({{ section.blocks.size | at_least: 1 }}, minmax(0, 1fr)); gap:0; }
+  #shopify-section-{{ section.id }} .rl-tl__step { position:relative; padding:36px 20px 0 0; display:flex; flex-direction:column; gap:8px; }
+  #shopify-section-{{ section.id }} .rl-tl__step::before { content:""; position:absolute; top:8px; left:0; right:0; height:2px; background:{{ section.settings.accent }}; opacity:.3; }
+  #shopify-section-{{ section.id }} .rl-tl__step::after { content:""; position:absolute; top:0; left:0; width:18px; height:18px; border-radius:50%; background:{{ section.settings.accent }}; }
+  #shopify-section-{{ section.id }} .rl-tl__time { margin:0; font-family:var(--heading-font-family); font-size:clamp(30px,3.4vw,44px); font-weight:800; line-height:1; color:{{ section.settings.accent }}; }
+  #shopify-section-{{ section.id }} .rl-tl__step h3 { margin:0; font-family:var(--text-font-family); font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; line-height:1.3; }
+  #shopify-section-{{ section.id }} .rl-tl__step p.rl-tl__text { margin:0; font-size:15px; line-height:1.55; opacity:.85; max-width:26em; }
+  @media (max-width: 799px) {
+    #shopify-section-{{ section.id }} .rl-tl__list { grid-template-columns:1fr; }
+    #shopify-section-{{ section.id }} .rl-tl__step { padding:0 0 32px 40px; }
+    #shopify-section-{{ section.id }} .rl-tl__step::before { top:0; bottom:0; left:8px; right:auto; width:2px; height:auto; }
+    #shopify-section-{{ section.id }} .rl-tl__step:last-child { padding-bottom:0; }
+  }
+{%- endstyle -%}
+
+<section class="rl-tl" id="journee">
+  <div class="rl-tl__head">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p>{{ section.settings.subtitle }}</p>{%- endif -%}
+  </div>
+  <ol class="rl-tl__list">
+    {%- for block in section.blocks -%}
+      <li class="rl-tl__step" {{ block.shopify_attributes }}>
+        <p class="rl-tl__time">{{ block.settings.time }}</p>
+        <h3>{{ block.settings.title }}</h3>
+        {%- if block.settings.text != blank -%}<p class="rl-tl__text">{{ block.settings.text }}</p>{%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
+
+{% schema %}
+{
+  "name": "RL · Frise journée",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Ta première journée sans rentrer ton ventre" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre" },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent", "label": "Couleur d'accent", "default": "#B3261E" }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        { "type": "text", "id": "time", "label": "Heure", "default": "8 h" },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Moment" },
+        { "type": "textarea", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [{ "name": "RL · Frise journée" }]
+}
+{% endschema %}

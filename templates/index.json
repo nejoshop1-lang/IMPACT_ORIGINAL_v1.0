@@ -19,7 +19,11 @@
         "link_anchor": "#benefices",
         "bg": "#FBF5F1",
         "text": "#1C1917",
-        "accent": "#B3261E"
+        "accent": "#B3261E",
+        "promo_enabled": true,
+        "promo_label": "Black Friday",
+        "promo_offer": "",
+        "promo_end": "2026-11-30 23:59:59 +0100"
       }
     },
     "rl_press": {
@@ -270,11 +274,12 @@
       ],
       "settings": {
         "title": "Simple comme une culotte",
+        "composition": "<p>Lavage à la main à l'eau froide. Séchage à plat. Ne pas sécher en machine.</p>",
         "col_fr": "Équivalent FR",
         "col_waist": "Poids indicatif",
         "col_hips": "Taille de la culotte à plat",
-        "size_note": "Entre deux tailles ? Prends la plus grande. Elle doit tenir, pas serrer.",
-        "composition": "<p>Lavage à la main à l'eau froide. Séchage à plat. Ne pas sécher en machine.</p>"
+        "size_intro": "Ce modèle taille petit. Repère-toi avec ta taille française habituelle, puis vérifie avec ton poids.",
+        "size_note": "Entre deux tailles ? Prends la plus grande. Elle doit tenir, pas serrer."
       }
     },
     "rl_faq": {
@@ -326,12 +331,63 @@
       "settings": {
         "title": "Tes questions, nos réponses franches",
         "open_first": true,
-        "bg": "#FFFFFF"
+        "bg": "#FBF5F1"
       }
     },
     "rl_contact": {
       "type": "rl-contact",
-      "settings": {}
+      "settings": {
+        "bg": "#FFFFFF"
+      }
+    },
+    "rl_timeline": {
+      "type": "rl-timeline",
+      "blocks": {
+        "m1": {
+          "type": "moment",
+          "settings": {
+            "time": "8 h",
+            "title": "Tu l’enfiles",
+            "text": "Taille haute, au-dessus du nombril. Ton ventre est tenu, tu n’as plus à y penser."
+          }
+        },
+        "m2": {
+          "type": "moment",
+          "settings": {
+            "time": "13 h",
+            "title": "Tu déjeunes assise",
+            "text": "Elle reste au-dessus du nombril quand tu t’assois. Pas de coussin sur les genoux."
+          }
+        },
+        "m3": {
+          "type": "moment",
+          "settings": {
+            "time": "15 h",
+            "title": "Tu l’as oubliée",
+            "text": "Pas d’aller-retour aux toilettes du bureau pour l’enlever."
+          }
+        },
+        "m4": {
+          "type": "moment",
+          "settings": {
+            "time": "20 h",
+            "title": "Tu enlèves ton jean",
+            "text": "Et pour une fois, ton corps n’a rien à relâcher. Tu ne retenais rien."
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {
+        "title": "Ta première journée sans rentrer ton ventre",
+        "subtitle": "Du matin au soir, voilà ce qui change.",
+        "bg": "#FFFFFF",
+        "accent": "#B3261E"
+      }
     }
   },
   "order": [
@@ -341,6 +397,7 @@
     "rl_ugc",
     "rl_reviews",
     "rl_how",
+    "rl_timeline",
     "rl_faq",
     "rl_contact"
   ]
