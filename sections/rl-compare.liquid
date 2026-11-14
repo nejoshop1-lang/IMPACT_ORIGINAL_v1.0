@@ -1,0 +1,67 @@
+{%- comment -%} Relâche — Comparatif : gaine classique / Relâche. {%- endcomment -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-cmp { background:{{ section.settings.bg }}; padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px); display:flex; flex-direction:column; align-items:center; gap:40px; }
+  #shopify-section-{{ section.id }} .rl-cmp__head { text-align:center; max-width:820px; display:flex; flex-direction:column; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-cmp__head h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(26px,3.2vw,42px); line-height:1.12; text-transform:uppercase; text-wrap:balance; }
+  #shopify-section-{{ section.id }} .rl-cmp__head p { margin:0; font-size:17px; opacity:.8; }
+  #shopify-section-{{ section.id }} .rl-cmp__scroll { width:100%; max-width:980px; overflow-x:auto; }
+  #shopify-section-{{ section.id }} .rl-cmp table { width:100%; min-width:560px; border-collapse:separate; border-spacing:0; font-size:16px; line-height:1.45; }
+  #shopify-section-{{ section.id }} .rl-cmp th, #shopify-section-{{ section.id }} .rl-cmp td { padding:18px 20px; text-align:left; vertical-align:top; border-bottom:1px solid #EFE4DA; }
+  #shopify-section-{{ section.id }} .rl-cmp thead th { font-family:var(--heading-font-family); font-size:15px; text-transform:uppercase; letter-spacing:.06em; border-bottom:0; }
+  #shopify-section-{{ section.id }} .rl-cmp tbody th { font-weight:700; width:24%; }
+  #shopify-section-{{ section.id }} .rl-cmp .rl-cmp__other { opacity:.75; width:34%; }
+  #shopify-section-{{ section.id }} .rl-cmp .rl-cmp__us { background:{{ section.settings.accent }}; color:#FFFFFF; font-weight:600; border-bottom-color:rgba(255,255,255,.25); }
+  #shopify-section-{{ section.id }} .rl-cmp thead .rl-cmp__us { border-radius:16px 16px 0 0; }
+  #shopify-section-{{ section.id }} .rl-cmp tbody tr:last-child .rl-cmp__us { border-radius:0 0 16px 16px; border-bottom:0; }
+{%- endstyle -%}
+
+<section class="rl-cmp" id="comparatif">
+  <div class="rl-cmp__head">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p>{{ section.settings.subtitle }}</p>{%- endif -%}
+  </div>
+  <div class="rl-cmp__scroll">
+    <table>
+      <thead>
+        <tr><td></td><th scope="col" class="rl-cmp__other">{{ section.settings.col_other }}</th><th scope="col" class="rl-cmp__us">{{ section.settings.col_us }}</th></tr>
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr {{ block.shopify_attributes }}>
+            <th scope="row">{{ block.settings.moment }}</th>
+            <td class="rl-cmp__other">{{ block.settings.other }}</td>
+            <td class="rl-cmp__us">{{ block.settings.us }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RL · Comparatif",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Pourquoi tes gaines finissent roulées sous ton nombril" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre" },
+    { "type": "text", "id": "col_other", "label": "Colonne comparée", "default": "Une gaine classique" },
+    { "type": "text", "id": "col_us", "label": "Colonne de la marque", "default": "Relâche" },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent", "label": "Couleur de la colonne de la marque", "default": "#B3261E" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Ligne",
+      "settings": [
+        { "type": "text", "id": "moment", "label": "Critère", "default": "Critère" },
+        { "type": "textarea", "id": "other", "label": "Gaine classique" },
+        { "type": "textarea", "id": "us", "label": "Ta marque", "info": "N'écris que ce que tu as vérifié sur le produit." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "RL · Comparatif" }]
+}
+{% endschema %}

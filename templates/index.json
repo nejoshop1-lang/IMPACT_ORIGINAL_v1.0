@@ -331,13 +331,13 @@
       "settings": {
         "title": "Tes questions, nos réponses franches",
         "open_first": true,
-        "bg": "#FBF5F1"
+        "bg": "#FFFFFF"
       }
     },
     "rl_contact": {
       "type": "rl-contact",
       "settings": {
-        "bg": "#FFFFFF"
+        "bg": "#FBF5F1"
       }
     },
     "rl_timeline": {
@@ -385,20 +385,126 @@
       "settings": {
         "title": "Ta première journée sans rentrer ton ventre",
         "subtitle": "Du matin au soir, voilà ce qui change.",
+        "bg": "#FBF5F1",
+        "accent": "#B3261E"
+      }
+    },
+    "rl_checklist": {
+      "type": "rl-checklist",
+      "blocks": {
+        "c1": {
+          "type": "item",
+          "settings": {
+            "text": "Tu attrapes un coussin dès que tu t’assois chez des amis."
+          }
+        },
+        "c2": {
+          "type": "item",
+          "settings": {
+            "text": "Au resto, ton sac reste posé sur tes cuisses."
+          }
+        },
+        "c3": {
+          "type": "item",
+          "settings": {
+            "text": "Sur les photos de groupe, tu te places au deuxième rang."
+          }
+        },
+        "c4": {
+          "type": "item",
+          "settings": {
+            "text": "Tu rentres ton ventre quand quelqu’un te prend dans ses bras."
+          }
+        },
+        "c5": {
+          "type": "item",
+          "settings": {
+            "text": "Le soir, tu enlèves ton jean et tu sens tout se relâcher."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "title": "Tu te reconnais ?",
+        "conclusion": "Si tu en as coché une seule, cette page est pour toi.",
+        "bg": "#FBF5F1",
+        "accent": "#B3261E"
+      }
+    },
+    "rl_compare": {
+      "type": "rl-compare",
+      "blocks": {
+        "k1": {
+          "type": "row",
+          "settings": {
+            "moment": "Quand tu t’assois",
+            "other": "Le haut roule souvent sous le nombril.",
+            "us": "Elle monte au-dessus du nombril pour rester en place."
+          }
+        },
+        "k2": {
+          "type": "row",
+          "settings": {
+            "moment": "Pendant la journée",
+            "other": "Tu penses à elle. Tu finis par l’enlever.",
+            "us": "Un maintien pensé pour être porté du matin au soir."
+          }
+        },
+        "k3": {
+          "type": "row",
+          "settings": {
+            "moment": "Les tailles",
+            "other": "Le choix s’arrête souvent autour du 44.",
+            "us": "Du S au 5XL, avec un guide en centimètres."
+          }
+        },
+        "k4": {
+          "type": "row",
+          "settings": {
+            "moment": "Ce qu’on te promet",
+            "other": "Des centimètres en moins, des actifs « brûle-graisse ».",
+            "us": "Un ventre tenu tant que tu la portes. Rien de plus, et on te le dit."
+          }
+        }
+      },
+      "block_order": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ],
+      "settings": {
+        "title": "Pourquoi tes gaines finissent roulées sous ton nombril",
+        "subtitle": "Debout devant le miroir, elles marchent toutes. C’est le reste de la journée qui pose problème.",
+        "col_other": "Une gaine classique",
+        "col_us": "Relâche",
         "bg": "#FFFFFF",
         "accent": "#B3261E"
       }
+    },
+    "rl_waitlist": {
+      "type": "rl-waitlist",
+      "settings": {}
     }
   },
   "order": [
     "rl_hero",
+    "rl_checklist",
     "rl_press",
     "rl_benefits",
     "rl_ugc",
     "rl_reviews",
     "rl_how",
+    "rl_compare",
     "rl_timeline",
     "rl_faq",
+    "rl_waitlist",
     "rl_contact"
   ]
 }

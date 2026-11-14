@@ -1,0 +1,56 @@
+{%- comment -%} Relâche — Liste d'attente : inscription e-mail avant l'ouverture. {%- endcomment -%}
+{%- style -%}
+  #shopify-section-{{ section.id }} .rl-wl { background:{{ section.settings.bg }}; color:{{ section.settings.text }}; padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px); display:flex; justify-content:center; }
+  #shopify-section-{{ section.id }} .rl-wl__inner { width:100%; max-width:640px; display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center; }
+  #shopify-section-{{ section.id }} .rl-wl h2 { margin:0; font-family:var(--heading-font-family); font-size:clamp(26px,3.2vw,42px); line-height:1.12; text-transform:uppercase; text-wrap:balance; color:inherit; }
+  #shopify-section-{{ section.id }} .rl-wl__text { margin:0; font-size:17px; line-height:1.55; }
+  #shopify-section-{{ section.id }} .rl-wl form { width:100%; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  #shopify-section-{{ section.id }} .rl-wl__row { width:100%; display:flex; flex-wrap:wrap; gap:10px; }
+  #shopify-section-{{ section.id }} .rl-wl label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  #shopify-section-{{ section.id }} .rl-wl input[type="email"] { flex:1 1 260px; min-height:52px; border:0; border-radius:999px; padding:0 22px; font:inherit; background:#FFFFFF; color:#1C1917; box-sizing:border-box; }
+  #shopify-section-{{ section.id }} .rl-wl button { flex:0 0 auto; min-height:52px; padding:0 28px; border:0; border-radius:999px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_text }}; font:inherit; font-weight:700; cursor:pointer; }
+  #shopify-section-{{ section.id }} .rl-wl__note { margin:0; font-size:13px; opacity:.85; }
+  #shopify-section-{{ section.id }} .rl-wl__msg { margin:0; padding:12px 18px; border-radius:12px; font-size:15px; font-weight:600; background:#FFFFFF; color:#1C1917; }
+{%- endstyle -%}
+
+<section class="rl-wl" id="liste-attente">
+  <div class="rl-wl__inner">
+    <h2>{{ section.settings.title }}</h2>
+    {%- if section.settings.text_body != blank -%}<p class="rl-wl__text">{{ section.settings.text_body }}</p>{%- endif -%}
+    {%- form 'customer', id: 'RlWaitlistForm' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter, liste-attente">
+      {%- if form.posted_successfully? -%}
+        <p class="rl-wl__msg" role="status">{{ section.settings.success }}</p>
+      {%- else -%}
+        {%- if form.errors -%}<p class="rl-wl__msg" role="alert">{{ section.settings.error }}</p>{%- endif -%}
+        <div class="rl-wl__row">
+          <label for="RlWaitlist-{{ section.id }}">{{ section.settings.placeholder }}</label>
+          <input type="email" id="RlWaitlist-{{ section.id }}" name="contact[email]" autocomplete="email" required placeholder="{{ section.settings.placeholder | escape }}">
+          <button type="submit">{{ section.settings.button }}</button>
+        </div>
+        {%- if section.settings.note != blank -%}<p class="rl-wl__note">{{ section.settings.note }}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RL · Liste d'attente",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Sois prévenue à l'ouverture" },
+    { "type": "textarea", "id": "text_body", "label": "Texte", "default": "Laisse ton e-mail : on t'écrit le jour où Relâche ouvre. Rien d'autre." },
+    { "type": "text", "id": "placeholder", "label": "Texte du champ", "default": "Ton e-mail" },
+    { "type": "text", "id": "button", "label": "Bouton", "default": "Préviens-moi" },
+    { "type": "text", "id": "note", "label": "Mention sous le champ", "default": "En t'inscrivant, tu acceptes de recevoir nos e-mails. Désinscription en un clic." },
+    { "type": "text", "id": "success", "label": "Message de confirmation", "default": "C'est noté. On t'écrit dès l'ouverture." },
+    { "type": "text", "id": "error", "label": "Message d'erreur", "default": "Vérifie ton e-mail, puis réessaie." },
+    { "type": "color", "id": "bg", "label": "Fond", "default": "#B3261E" },
+    { "type": "color", "id": "text", "label": "Texte", "default": "#FFFFFF" },
+    { "type": "color", "id": "button_bg", "label": "Fond du bouton", "default": "#1C1917" },
+    { "type": "color", "id": "button_text", "label": "Texte du bouton", "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "RL · Liste d'attente" }]
+}
+{% endschema %}
